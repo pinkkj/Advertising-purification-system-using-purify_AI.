@@ -21,8 +21,10 @@ reverse_exp_map = {0: 1, 1: 2, 2: 3, 3: 0}  # 노출: 1~3
 reverse_sex_map = {0: 0, 1: 2, 2: 3, 3: 0}  # 성행위: 0, 2, 3
 
 # 모델 로드
+print("📦 모델 로드 시작")
 model = load_convnext_model('best_overall_convnext_model_2.pt')
 model.eval()
+print("✅ 모델 로드 완료")
 
 # 이미지 전처리
 transform = transforms.Compose([
@@ -66,4 +68,5 @@ def predict():
         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
+    print("🚀 Flask 서버 실행 시작")
     app.run(host='0.0.0.0', port=5000)
