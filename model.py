@@ -18,7 +18,7 @@ class ConvNeXtMultiTaskModel(nn.Module):
         out_sex = self.head_sexual(features)    
         return out_exp, out_sex
 
-def load_convnext_model(path='best_overall_convnext_model_2.pt'):
-    model = ConvNeXtMultiTaskModel()
-    model.load_state_dict(torch.load(path, map_location=torch.device('cpu')))
-    return model
+    def load_convnext_model(path='best_overall_convnext_model_2.pt'):
+        model = ConvNeXtMultiTaskModel()
+        model.load_state_dict(torch.load(path, map_location=torch.device('cpu'), weights_only=False))  
+        return model
